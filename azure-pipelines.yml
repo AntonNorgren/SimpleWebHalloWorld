@@ -15,3 +15,12 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+  steps:
+# ...
+# do this after other tasks such as building
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/Lektion4/SimpleWebHalloWorld_tests/SimpleWebHalloWorld_tests.csproj'
+    arguments: '--configuration $(buildConfiguration)'
