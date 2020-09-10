@@ -3,18 +3,45 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+resources:
+- repo: self
+
+
+
+
 
 variables:
+  # Container registry service connection established during pipeline creation
+  imageRepository: 'b04helloworldregistry.azurecr.io'
+  containerRegistry: 'helloworld'
+  tag: '$(Build.BuildId)'
   buildConfiguration: 'Release'
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/SimpleWebHalloWorld_tests/SimpleWebHalloWorld_tests.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+  vmImageName: 'ubuntu-latest'
+
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+  
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+      
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: SimpleWebHalloWorld/Dockerfile
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+
+
+
+
