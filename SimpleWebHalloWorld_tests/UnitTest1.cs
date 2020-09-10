@@ -15,7 +15,7 @@ namespace SimpleWebHalloWorld_tests
 
             var result = controller.Index() as ViewResult;
             
-            Assert.AreEqual("Index", result.ViewName);
+            Assert.AreEqual("mndex", result.ViewName);
 
         }
     }
