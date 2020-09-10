@@ -33,7 +33,7 @@ stages:
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
+        dockerfile: $(SimpleWebHalloWorld/Dockerfile)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
