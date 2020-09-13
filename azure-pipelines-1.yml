@@ -28,6 +28,6 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: SimpleWebHalloWorld/Dockerfile
-        containerRegistry: swhwacr
+        containerRegistry: b04helloworldregistry
         tags: |
           $(tag)
