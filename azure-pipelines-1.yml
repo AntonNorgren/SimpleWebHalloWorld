@@ -27,7 +27,7 @@ stages:
       inputs:
         command: buildAndPush
         repository: b04helloworldregistry.azurecr.io
-        dockerfile: SimpleWebHalloWorld/Dockerfile
+        dockerfile: 'Dockerfile'
         containerRegistry: b04helloworldregistry
         tags: |
           $(tag)
