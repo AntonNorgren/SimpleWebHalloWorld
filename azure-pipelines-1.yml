@@ -26,7 +26,7 @@ stages:
       displayName: Build and push an image to container registry
       inputs:
         command: buildAndPush
-        repository: $(imageRepository)
+        repository: b04helloworldregistry.azurecr.io
         dockerfile: SimpleWebHalloWorld/Dockerfile
         containerRegistry: b04helloworldregistry
         tags: |
