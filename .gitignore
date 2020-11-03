@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Environment specific variabels
+*.dev.json
+*.dev.cs
+web/SpacePark/SpacePark/appsettings.Development.json
+web/SpacePark/SpacePark/appsettings.json
